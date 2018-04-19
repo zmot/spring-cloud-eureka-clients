@@ -15,7 +15,7 @@ public class SentenceController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @GetMapping("/")
+    @GetMapping("/sentence")
     public String getSentence() {
         return getWordFromService("eureka-client-noun") + " " + getWordFromService("eureka-client-verb") + ".";
     }

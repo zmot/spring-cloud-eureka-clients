@@ -10,6 +10,16 @@ server:
   port: 8086
 ---
 spring:
+  profiles: noun2
+  application:
+    name: eureka-client-noun-2
+  cloud:
+    config:
+      uri: http://localhost:8090
+server:
+  port: 8084
+---
+spring:
   profiles: verb
   application:
     name: eureka-client-verb
