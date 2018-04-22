@@ -1,22 +1,26 @@
-package com.tm.microservices.eureka.client.sentence;
+package com.tm.microservices.eureka.client.sentence.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tm.microservices.eureka.client.sentence.dao.NounClient;
 import com.tm.microservices.eureka.client.sentence.dao.VerbClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
-@RestController
-public class SentenceController {
-
+@Service
+public class SentenceServiceImpl implements SentenceService {
     @Autowired
     private VerbClient verbClient;
 
     @Autowired
     private NounClient nounClient;
 
-    @GetMapping("/sentence")
+    @Override
+    @HystrixCommand(fallbackMethod = "getDefault")
     public String getSentence() {
         return nounClient.getWord() + " " + verbClient.getWord() + ".";
+    }
+
+    public String getDefault() {
+        return "This is a default sentence";
     }
 }
