@@ -15,7 +15,7 @@ public class Application {
     }
 
     @Bean
-    public ConversionService conversionService() {
+    ConversionService conversionService() {
         return new DefaultConversionService();
     }
 }

@@ -28,8 +28,7 @@
     </dependencyManagement>
 
     <modules>
-        <module>client-noun</module>
-        <module>client-verb</module>
+        <module>client-word</module>
         <module>client-sentence</module>
     </modules>
 </project>
